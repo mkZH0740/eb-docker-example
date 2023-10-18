@@ -4,8 +4,16 @@ import { useEffect } from 'react'
 
 export default function Home() {
   useEffect(() => {
-    fetch("/backend/create-user", { method: "GET" });
-    console.log(fetch("/backend/users", { method: "GET" }));
+    fetch("/create-user", { method: "GET", mode: "no-cors" }).then(() => {
+      console.log("finished")
+    }).catch((err) => {
+      console.log(err)
+    })
+    fetch("/users", { method: "GET", mode: "no-cors" }).then((response) => {
+      response.json().then(console.log)
+    }).catch((err) => {
+      console.log(err)
+    })
   })
 
   return (
