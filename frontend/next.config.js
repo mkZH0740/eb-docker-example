@@ -3,7 +3,7 @@ const nextConfig = {
     async rewrites() {
         return [{
             source: '/:path*',
-            destination: 'http://127.0.0.1:8000/:path*/'
+            destination: 'http://backend:8000/:path*/'
         }]
     }
 }
