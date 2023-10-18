@@ -13,6 +13,8 @@ services:
       context: ./frontend
     networks:
       - internal
+    depends_on:
+      - backend
 
 networks:
   internal:
