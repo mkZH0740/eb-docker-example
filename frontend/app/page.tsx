@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 export default function Home() {
   useEffect(() => {
     console.log("hello world!")
+    console.log("this is not what I expected")
     fetch("/create-user", { method: "GET", mode: "no-cors" }).then(() => {
       console.log("finished")
     }).catch((err) => {
