@@ -20,7 +20,11 @@ from django.urls import path, include
 from rest_framework import routers, serializers, viewsets
 from django.contrib.auth.models import User
 
-from .views import create_user
+from django.views.static import serve
+
+from .views import create_user, ping
+
+from .settings import STATIC_URL
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -38,8 +42,9 @@ router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('', serve, kwargs={ 'path': 'index.html', 'document_root': STATIC_URL }),
     path('create-user/', create_user),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
+    path('ping/', ping)
 ]

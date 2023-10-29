@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-1@3x_m3a*y&*6mlwqupr(zx=zhjz1k=23&rq*u!lgest@c-q+(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'backend']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'backend', 'deploy-env.eba-ipmb6keu.us-west-2.elasticbeanstalk.com']
 
 
 # Application definition
@@ -117,6 +118,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "static", "static"),
+    os.path.join(BASE_DIR, "static", "static", "css"),
+    os.path.join(BASE_DIR, "static", "static", "js"),
+    os.path.join(BASE_DIR, "static", "static", "media"),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
