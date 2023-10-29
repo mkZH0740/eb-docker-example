@@ -36,7 +36,6 @@ before_deploy:
   - cp -r ./frontend/build/* ./backend/static
   - cd ./backend
   - rm .gitignore
-  - mv deploy.gitignore .gitignore
   - ls -l ./static/
 
 deploy:
