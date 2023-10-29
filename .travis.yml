@@ -4,11 +4,12 @@ os: linux
 dist: jammy
 python:
   - "3.10"
-node_js:
-  - "lts/*"
+
+before_install:
+  - nvm install --lts
+  - npm install -g npm@latest
 
 install:
-  - npm install -g npm@latest
   - gem install webrick
   - mkdir ./tools
   - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C ./tools
