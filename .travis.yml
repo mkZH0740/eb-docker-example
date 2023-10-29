@@ -40,13 +40,13 @@ before_deploy:
 
 deploy:
   - provider: elasticbeanstalk
-    skip_cleanup: true
+    cleanup: false
     zip_file: deploy.zip
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_ACCESS_SECRET
     region: $AWS_DEPLOY_REGION
     app: $AWS_APP_NAME
     env: $AWS_APP_ENV_PROD
-    bucket_name: $AWS_BUCKET_NAME
+    bucket: $AWS_BUCKET_NAME
     on:
       branch: main 
