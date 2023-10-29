@@ -11,4 +11,5 @@ def create_user(request):
 
 
 def ping(request):
+    print("hi")
     return JsonResponse({"detail": "pong"})

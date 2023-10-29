@@ -6,6 +6,7 @@ function App() {
   useEffect(() => {
     console.log("bob")
     console.log("bober")
+    console.log("bobest")
     fetch("/ping", { method: "GET" })
       .then((response) => {
         response.json().then(console.log)
