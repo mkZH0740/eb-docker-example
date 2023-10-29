@@ -35,13 +35,10 @@ before_deploy:
   - mkdir ./backend/static
   - cp -r ./frontend/build/* ./backend/static
   - cd ./backend
-  - chmod -R 777 ./
-  - zip -r deploy.zip * -x __pycache__/*
 
 deploy:
   - provider: elasticbeanstalk
     cleanup: false
-    zip_file: deploy.zip
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_ACCESS_SECRET
     region: $AWS_DEPLOY_REGION
