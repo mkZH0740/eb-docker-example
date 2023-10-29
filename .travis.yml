@@ -32,7 +32,6 @@ after_script:
   - ./tools/coveralls report --repo-token=$COVERALLS_REPO_TOKEN ./coverage.xml
 
 before_deploy:
-  - cp -r ./frontend/build/* ./backend/static
   - cd ./backend
 
 deploy:
