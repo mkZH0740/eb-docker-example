@@ -8,6 +8,7 @@ node_js:
   - "lts/*"
 
 install:
+  - npm install -g npm@latest
   - gem install webrick
   - mkdir ./tools
   - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C ./tools
