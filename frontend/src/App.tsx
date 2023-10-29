@@ -5,6 +5,7 @@ import './App.css';
 function App() {
   useEffect(() => {
     console.log("bob")
+    console.log("peter")
     fetch("/ping", { method: "GET" })
       .then((response) => {
         response.json().then(console.log)
