@@ -34,12 +34,12 @@ after_script:
 before_deploy:
   - mkdir ./backend/static
   - cp -r ./frontend/build/* ./backend/static
-  - cd ./backend
-  - sed -i '/tatic/d' .gitignore
+  - zip -r deploy.zip ./backend/*
 
 deploy:
   - provider: elasticbeanstalk
     skip_cleanup: true
+    zip_file: deploy.zip
     access_key_id: $AWS_ACCESS_KEY
     secret_access_key: $AWS_ACCESS_SECRET
     region: $AWS_DEPLOY_REGION
