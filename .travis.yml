@@ -34,7 +34,8 @@ after_script:
 before_deploy:
   - mkdir ./backend/static
   - cp -r ./frontend/build/* ./backend/static
-  - zip -r deploy.zip ./backend/*
+  - cd ./backend
+  - zip -r deploy.zip *
 
 deploy:
   - provider: elasticbeanstalk
