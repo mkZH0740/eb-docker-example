@@ -35,6 +35,7 @@ before_deploy:
   - mkdir ./backend/static
   - cp -r ./frontend/build/* ./backend/static
   - cd ./backend
+  - chmod -r 777 *
   - zip -r deploy.zip * -x __pycache__/*
 
 deploy:
