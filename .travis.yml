@@ -35,6 +35,7 @@ before_deploy:
   - mkdir ./backend/static
   - cp -r ./frontend/build/* ./backend/static
   - cd ./backend
+  - ls -l ./static/
 
 deploy:
   - provider: elasticbeanstalk
