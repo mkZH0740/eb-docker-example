@@ -35,9 +35,7 @@ before_deploy:
   - mkdir ./backend/static
   - cp -r ./frontend/build/* ./backend/static
   - cd ./backend
-  - rm .gitignore
-  - cp deploy.gitignore .gitignore
-  - ls -l ./static/
+  - sed -i '/tatic/d' .gitignore
 
 deploy:
   - provider: elasticbeanstalk
