@@ -42,6 +42,6 @@ deploy:
     region: $AWS_DEPLOY_REGION
     app: $AWS_APP_NAME
     env: $AWS_APP_ENV_PROD
-    bucket_name: $AWS_BUCKET_NAME
+    bucket: $AWS_BUCKET_NAME
     on:
       branch: main 
