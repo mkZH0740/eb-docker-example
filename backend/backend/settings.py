@@ -30,7 +30,7 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
     "backend",
-    "deploy-test-env.eba-ipmb6keu.us-west-2.elasticbeanstalk.com",
+    "deploy-env.eba-m8sgh5we.us-west-2.elasticbeanstalk.com",
 ]
 
 
