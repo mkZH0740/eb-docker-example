@@ -44,5 +44,6 @@ deploy:
     app: $AWS_APP_NAME
     env: $AWS_APP_ENV_PROD
     bucket_name: $AWS_BUCKET_NAME
+    skip_cleanup: true
     on:
       branch: main 
