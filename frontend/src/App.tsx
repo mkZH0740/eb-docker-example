@@ -7,6 +7,7 @@ function App() {
     console.log("bob")
     console.log("bober")
     console.log("bobest")
+    console.log("huh?")
     fetch("/ping", { method: "GET" })
       .then((response) => {
         response.json().then(console.log)

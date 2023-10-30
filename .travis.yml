@@ -1,0 +1,49 @@
+language: python
+
+# ubuntu 22.04
+os: linux
+dist: jammy
+
+python:
+  - "3.10"
+
+env:
+  global:
+    - EB_VERSION_NUMBER=travis-$TRAVIS_BUILD_NUMBER
+
+before_install:
+  - nvm install --lts
+  - npm install -g npm@latest
+
+install:
+  - cd backend
+  - pip install -r requirements.txt
+  - cd ..
+  - cd frontend
+  - npm install
+  - cd ..
+
+before_script:
+  - mkdir tools
+  - curl -L https://coveralls.io/coveralls-linux.tar.gz | tar -xz -C tools
+  - cd backend
+  - python manage.py makemigrations
+  - python manage.py migrate
+  - cd ..
+  - npm install -g beanstalk-deploy
+
+script:
+  - cd backend
+  - black . --check
+  - flake8 . --max-line-length=88
+  - cd ..
+  - coverage run --source=app backend/manage.py test
+  - coverage xml
+  - ./tools/coverals report --repo-token=$COVERALLS_REPO_TOKEN ./coverage.xml
+
+after_script:
+  # deploy
+  - cd backend
+  - zip -r ../deploy.zip . -x '*.git*'
+  - cd ..
+  - beanstalk-deploy $AWS_APP_NAME $AWS_APP_ENV_PROD $EB_VERSION_NUMBER $AWS_DEPLOY_REGION deploy.zip
