@@ -44,9 +44,8 @@ jobs:
           ls -l
       - name: Generate deploy file
         working-directory: backend
-        run: zip -r deploy.zip . -x '*.git*'
+        run: zip -r ../deploy.zip . -x '*.git*'
       - name: Deploy to EB
-        working-directory: backend
         uses: einaregilsson/beanstalk-deploy@v21
         with:
             aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
