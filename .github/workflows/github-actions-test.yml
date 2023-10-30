@@ -1,5 +1,9 @@
 name: Deploy
 on: [push]
+
+env:
+  EB_VERSION_LABEL: github-${{github.run_number}}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -38,4 +42,17 @@ jobs:
         working-directory: backend/static
         run: |
           ls -l
+      - name: Generate deploy file
+        working-directory: backend
+        run: zip -r deploy.zip . -x '*.git*'
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v21
+        with:
+            aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+            aws_secret_key: ${{ secrets.AWS_ACCESS_SECRET }}
+            application_name: eb-django-test
+            environment_name: deploy-env
+            version_label: ${{ env.EB_VERSION_LABEL }}
+            region: us-west-2
+            deployment_package: deploy.zip
         
